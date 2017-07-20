@@ -68,19 +68,3 @@ resultsSection.addEventListener('click', function(e) {
     e.target.src = 'assets/images/play-btn-overlay.png';
   };
 });
-
-// musicPlayer.addEventListener('playing', function() {
-//   let src = this.src;
-//   imageArray.forEach(function(image) {
-//     if (image.dataset.preview === src) {
-//       image.src = 'assets/images/pause-btn-overlay.png';
-//       image.classList.add('playing');
-//       image.addEventListener('click', function() {
-//         image.src = 'assets/images/play-btn-overlay.png';
-//         image.classList.remove('playing');
-//         musicPlayer.pause();
-//         image.classList.add('not-playing');
-//       });
-//     };
-//   });
-// });
