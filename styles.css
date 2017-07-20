@@ -93,3 +93,13 @@ label {
 .play-image:hover {
   opacity: 0.8;
 }
+
+@media screen and (max-width: 900px) {
+  #submit {
+    position: static;
+    margin: 10px 0 10px 10px;
+  }
+  #search-bar {
+    width: 100%;
+  }
+}
