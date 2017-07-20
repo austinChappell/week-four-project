@@ -12,6 +12,7 @@ let searchBar = document.querySelector('#search-bar');
 let resultsSection = document.querySelector('.results');
 let musicPlayer = document.querySelector('.music-player');
 let limiter = document.querySelector('#limit');
+let imageArray = document.querySelectorAll('.play-image');
 
 submitButton.addEventListener('click', function(e) {
   e.preventDefault();
@@ -32,7 +33,7 @@ submitButton.addEventListener('click', function(e) {
           `<div class="result">
             <div class="result-image-div">
               <div class='one-hundred' style="background-image:url('${ result.artworkUrl100 }')">
-                <img class="play-image" src="assets/images/play-btn-overlay.png" data-preview="${ result.previewUrl }" />
+                <img class="play-image not-playing" src="assets/images/play-btn-overlay.png" data-preview="${ result.previewUrl }" />
               </div>
             </div>
             <h1 class="artist">${ result.artistName }</h1>
@@ -41,15 +42,45 @@ submitButton.addEventListener('click', function(e) {
         html += resultItem;
       });
       resultsSection.innerHTML = html;
+      imageArray = document.querySelectorAll('.play-image');
     });
   searchBar.value = '';
 });
 
 resultsSection.addEventListener('click', function(e) {
   console.log(e.target.getAttribute('data-preview'));
-  if (e.target.hasAttribute('data-preview')) {
+  if (e.target.hasAttribute('data-preview') && e.target.classList.contains('not-playing')) {
     let mp4 = e.target.getAttribute('data-preview');
     musicPlayer.setAttribute('src', mp4);
     musicPlayer.play();
+    imageArray.forEach(function(image) {
+      image.classList.remove('playing');
+      image.classList.add('not-playing');
+      image.classList.src = 'assets/images/play-btn-overlay.png'
+    });
+    e.target.classList.add('playing');
+    e.target.classList.remove('not-playing');
+    e.target.src = 'assets/images/pause-btn-overlay.png';
+  } else if (e.target.classList.contains('playing')) {
+    musicPlayer.pause();
+    e.target.classList.remove('playing');
+    e.target.classList.add('not-playing');
+    e.target.src = 'assets/images/play-btn-overlay.png';
   };
 });
+
+// musicPlayer.addEventListener('playing', function() {
+//   let src = this.src;
+//   imageArray.forEach(function(image) {
+//     if (image.dataset.preview === src) {
+//       image.src = 'assets/images/pause-btn-overlay.png';
+//       image.classList.add('playing');
+//       image.addEventListener('click', function() {
+//         image.src = 'assets/images/play-btn-overlay.png';
+//         image.classList.remove('playing');
+//         musicPlayer.pause();
+//         image.classList.add('not-playing');
+//       });
+//     };
+//   });
+// });
