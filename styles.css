@@ -30,11 +30,21 @@ body {
   margin: 0;
 }
 
-.result-image {
+.result-image-div {
+}
+
+.one-hundred {
+  height: 100px;
+  width: 100px;
+  margin: 0 auto;
+}
+
+.play-image {
+  opacity: 0;
   cursor: pointer;
   transition: 500ms;
 }
 
-.result-image:hover {
-  filter: contrast(90%);
+.play-image:hover {
+  opacity: 0.8;
 }

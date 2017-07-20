@@ -8,17 +8,18 @@
 // 4. Create a way to append the fetch results to your page
 // 5. Create a way to listen for a click that will play the song in the audio play
 let submitButton = document.querySelector('#submit');
-let searchTerm = '';
 let searchBar = document.querySelector('#search-bar');
 let resultsSection = document.querySelector('.results');
 let musicPlayer = document.querySelector('.music-player');
+let limiter = document.querySelector('#limit');
 
 submitButton.addEventListener('click', function(e) {
   e.preventDefault();
-  searchTerm = searchBar.value;
+  let searchTerm = searchBar.value;
+  let limit = limiter.value;
   console.log(searchTerm);
   let html = '';
-  fetch(`https://itunes.apple.com/search?term=${ searchTerm }&limit=20`)
+  fetch(`https://itunes.apple.com/search?term=${ searchTerm }&limit=${ limit }`)
     .then(function(response) {
       return response.json();
     })
@@ -29,7 +30,11 @@ submitButton.addEventListener('click', function(e) {
         preview = result.previewUrl;
         let resultItem =
           `<div class="result">
-            <img class="result-image" src="${ result.artworkUrl100 }" data-preview="${ result.previewUrl }" />
+            <div class="result-image-div">
+              <div class='one-hundred' style="background-image:url('${ result.artworkUrl100 }')">
+                <img class="play-image" src="assets/images/play-btn-overlay.png" data-preview="${ result.previewUrl }" />
+              </div>
+            </div>
             <h1 class="artist">${ result.artistName }</h1>
             <h2 class="song">${ result.trackName }</h2>
           </div>`
@@ -42,7 +47,7 @@ submitButton.addEventListener('click', function(e) {
 
 resultsSection.addEventListener('click', function(e) {
   console.log(e.target.getAttribute('data-preview'));
-  if (e.target.tagName === 'IMG') {
+  if (e.target.hasAttribute('data-preview')) {
     let mp4 = e.target.getAttribute('data-preview');
     musicPlayer.setAttribute('src', mp4);
     musicPlayer.play();
