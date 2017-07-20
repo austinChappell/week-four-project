@@ -1,10 +1,53 @@
 body {
-  background-color: #60d9f1;
+  background-color: #cecece;
+  color: #darkgray;
+  font-family: 'Roboto', sans-serif;
 }
 
 .container {
   width: 80%;
   margin: 0 auto;
+}
+
+header {
+  text-align: center;
+}
+
+form {
+  font-size: 20px;
+  position: relative;
+}
+
+select {
+  font-size: 16px;
+}
+
+#search-bar {
+  width: 50%;
+  font-size: 20px;
+  background-color: #fff;
+  padding: 8px;
+  border: none;
+  border-radius: 3px;
+}
+
+label {
+  margin: 20px;
+}
+
+#search-bar:focus {
+  outline: none;
+}
+
+#submit {
+  font-size: 20px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 3px;
+  background: #17607D;
+  color: white;
+  position: absolute;
+  right: 0;
 }
 
 .results {
@@ -21,13 +64,15 @@ body {
 }
 
 .artist {
-  font-size: 2.0em;
+  font-size: 0.8em;
   margin: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .song {
   font-size: 1.2em;
   margin: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .result-image-div {
