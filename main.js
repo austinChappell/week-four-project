@@ -56,7 +56,7 @@ resultsSection.addEventListener('click', function(e) {
     imageArray.forEach(function(image) {
       image.classList.remove('playing');
       image.classList.add('not-playing');
-      image.classList.src = 'assets/images/play-btn-overlay.png'
+      image.src = 'assets/images/play-btn-overlay.png'
     });
     e.target.classList.add('playing');
     e.target.classList.remove('not-playing');
