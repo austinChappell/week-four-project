@@ -11,6 +11,22 @@ body {
 
 header {
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.header-image {
+  flex-basis: 7%;
+}
+
+.title {
+  flex-basis: 63%;
+  text-align: right;
+}
+
+.logo {
+  width: 100%;
 }
 
 form {
