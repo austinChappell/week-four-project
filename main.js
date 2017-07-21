@@ -61,6 +61,11 @@ resultsSection.addEventListener('click', function(e) {
     e.target.classList.add('playing');
     e.target.classList.remove('not-playing');
     e.target.src = 'assets/images/pause-btn-overlay.png';
+    musicPlayer.addEventListener('ended', function() {
+      e.target.classList.remove('playing');
+      e.target.classList.add('not-playing');
+      e.target.src = 'assets/images/play-btn-overlay.png';      
+    });
   } else if (e.target.classList.contains('playing')) {
     musicPlayer.pause();
     e.target.classList.remove('playing');
