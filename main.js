@@ -36,8 +36,8 @@ submitButton.addEventListener('click', function(e) {
                 <img class="play-image not-playing" src="assets/images/play-btn-overlay.png" data-preview="${ result.previewUrl }" />
               </div>
             </div>
-            <h1 class="artist">${ result.artistName }</h1>
-            <h2 class="song">${ result.trackName }</h2>
+            <a href="${ result.artistViewUrl }" target="_blank" ><h1 class="artist">${ result.artistName }</h1></a>
+            <a href="${ result.trackViewUrl }" target="_blank" ><h2 class="song">${ result.trackName }</h2></a>
           </div>`
         html += resultItem;
       });
@@ -64,7 +64,7 @@ resultsSection.addEventListener('click', function(e) {
     musicPlayer.addEventListener('ended', function() {
       e.target.classList.remove('playing');
       e.target.classList.add('not-playing');
-      e.target.src = 'assets/images/play-btn-overlay.png';      
+      e.target.src = 'assets/images/play-btn-overlay.png';
     });
   } else if (e.target.classList.contains('playing')) {
     musicPlayer.pause();

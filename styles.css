@@ -1,6 +1,6 @@
 body {
   background-color: #cecece;
-  color: #darkgray;
+  color: #222;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -66,6 +66,11 @@ label {
   right: 0;
 }
 
+a {
+  text-decoration: none;
+  color: #222;
+}
+
 .results {
   display: flex;
   flex-wrap: wrap;
@@ -84,8 +89,8 @@ label {
 }
 
 .artist {
-  font-size: 0.8em;
-  margin: 0;
+  font-size: 0.9em;
+  margin: 8px 0 0;
   font-family: 'Montserrat', sans-serif;
 }
 
