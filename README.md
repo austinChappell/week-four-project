@@ -1,8 +1,16 @@
-This app is designed to search the iTunes music database, using the iTunes API.
+# Project Title
+
+Week-Five-Project
+
+## Project Description
+
+This is a project from The Iron Yard designed to demonstrate our ability to leverage APIs via the fetch method. This app is designed to search the iTunes music database, using the iTunes API.
+
+### Things to know
 
 The responsive web design is using flex-box.
 
-There is a click event listener on the submit button of the form. This event renders the fetch method to call the iTunes API, parse the data, and then render it to the page using template literal syntax and a forEach loop. The results can vary from 20-100, in multiples of 20. The function inside the event listener also has an event.preventDefault. This prevents the page from reloading, thus allowing the API data to render. As a result of the preventDefault, the input is specifically coded to clear upon clicking the submit button.
+There is a click event listener on the submit button of the form. This event renders the fetch method to call the iTunes API, parse the data, and then render it to the page using template literal syntax and a forEach loop. The results can vary from 20-100, in multiples of 20. The function inside the event listener also has an event.preventDefault. This prevents the page from reloading, thus allowing the API data to render to the DOM. sAs a result of the preventDefault, the input is specifically coded to clear upon clicking the submit button.
 
 The results section of the site has one click event listener on its entire area, and event bubbling is used to find the item that was clicked. If the album artwork is clicked, the song will play. If the artist name is clicked, you will be redirected to the artist's iTunes page in a new tab. If a track name is clicked, you will be redirected to the artist's album page in a new tab.
 
