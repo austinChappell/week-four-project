@@ -1,12 +1,4 @@
-/*
-  Here is a rough idea for the steps you could take:
-*/
-
-// 1. First select and store the elements you'll be working with
-// 2. Create your `submit` event for getting the user's search term
-// 3. Create your `fetch` request that is called after a submission
-// 4. Create a way to append the fetch results to your page
-// 5. Create a way to listen for a click that will play the song in the audio play
+// DEFINE VARIABLES
 let submitButton = document.querySelector('#submit');
 let searchBar = document.querySelector('#search-bar');
 let resultsSection = document.querySelector('.results');
@@ -14,11 +6,14 @@ let musicPlayer = document.querySelector('.music-player');
 let limiter = document.querySelector('#limit');
 let imageArray = document.querySelectorAll('.play-image');
 
+// SUBMIT BUTTON IS CLICKED
 submitButton.addEventListener('click', function(e) {
+  // DON'T LET THE PAGE RELOAD
   e.preventDefault();
+  // THIS IS USED TO ADD TO THE QUERY STRING OF THE URL
   let searchTerm = searchBar.value;
+  // SET NUMBER OF SEARCH RESULTS
   let limit = limiter.value;
-  console.log(searchTerm);
   let html = '';
   fetch(`https://itunes.apple.com/search?term=${ searchTerm }&limit=${ limit }`)
     .then(function(response) {
@@ -26,8 +21,8 @@ submitButton.addEventListener('click', function(e) {
     })
     .then(function(data) {
       let resultsArr = data.results;
-      console.log(resultsArr);
       resultsArr.forEach(function(result) {
+        // THIS IS THE AUDIO FILE
         preview = result.previewUrl;
         let resultItem =
           `<div class="result">
@@ -44,28 +39,36 @@ submitButton.addEventListener('click', function(e) {
       resultsSection.innerHTML = html;
       imageArray = document.querySelectorAll('.play-image');
     });
+  // CLEAR THE SEARCH BAR
   searchBar.value = '';
 });
 
+// USES EVENT BUBBLING
 resultsSection.addEventListener('click', function(e) {
-  console.log(e.target.getAttribute('data-preview'));
+  // IF ALBUM IMAGE IS CLICKED AND IT'S NOT ALREADY PLAYING
   if (e.target.hasAttribute('data-preview') && e.target.classList.contains('not-playing')) {
     let mp4 = e.target.getAttribute('data-preview');
+    // LOAD THE AUDIO FILE
     musicPlayer.setAttribute('src', mp4);
+    // PLAY MUSIC
     musicPlayer.play();
+    // ALL ALBUMS HAVE THE PLAY ICON
     imageArray.forEach(function(image) {
       image.classList.remove('playing');
       image.classList.add('not-playing');
       image.src = 'assets/images/play-btn-overlay.png'
     });
+    // ADD PLAYING CLASS TO, REMOVE NOT-PLAYING CLASS FROM CURRENT SONG
     e.target.classList.add('playing');
     e.target.classList.remove('not-playing');
     e.target.src = 'assets/images/pause-btn-overlay.png';
+    // WHEN MUSIC STOPS...
     musicPlayer.addEventListener('ended', function() {
       e.target.classList.remove('playing');
       e.target.classList.add('not-playing');
       e.target.src = 'assets/images/play-btn-overlay.png';
     });
+    // IF IT WAS ALREADY PLAYING AND IS CLICKED, PAUSE IT
   } else if (e.target.classList.contains('playing')) {
     musicPlayer.pause();
     e.target.classList.remove('playing');

@@ -1,6 +1,4 @@
-# Project Title
-
-Week-Five-Project
+# Week Five Project
 
 ## Project Description
 
