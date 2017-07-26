@@ -47,7 +47,7 @@ select {
   border-radius: 4px;
 }
 
-label {
+#limit-label {
   margin: 20px;
 }
 
@@ -162,5 +162,8 @@ a {
   }
   #search-bar {
     width: 100%;
+  }
+  #limit-label {
+    margin: 0;
   }
 }
