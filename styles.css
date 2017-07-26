@@ -45,6 +45,7 @@ select {
   padding: 8px;
   border: none;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
 #limit-label {
@@ -162,8 +163,12 @@ a {
   }
   #search-bar {
     width: 100%;
+    margin-bottom: 10px;
   }
   #limit-label {
+    margin: 0;
+  }
+  #submit {
     margin: 0;
   }
 }
