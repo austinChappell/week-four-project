@@ -170,5 +170,6 @@ a {
   }
   #submit {
     margin: 0;
+    float: right;
   }
 }
